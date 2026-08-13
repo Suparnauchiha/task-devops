@@ -12,7 +12,6 @@ function App() {
   const [error, setError] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
- 
   const fetchTasks = async () => {
     try {
       setLoading(true);
@@ -26,8 +25,6 @@ function App() {
       setLoading(false);
     }
   };
-   
-
 
   const handleAddTask = async (taskData) => {
     try {

@@ -1,6 +1,5 @@
-const dns = require("node:dns");
-dns.setServers(["1.1.1.1", "8.8.8.8"]);
-
+const dns = require('node:dns');
+dns.setServers(['1.1.1.1', '8.8.8.8']);
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -8,10 +7,8 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const taskRoutes = require('./routes/tasks');
 
-
 // Load environment variables
 dotenv.config();
-
 
 console.log(process.env.MONGO_URI);
 const app = express();
@@ -39,21 +36,21 @@ app.use((err, req, res, next) => {
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({
-    message: "Route not found",
+    message: 'Route not found',
   });
 });
 // Database connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("Connected to MongoDB");
+    console.log('Connected to MongoDB');
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.error("Database connection error:", error);
+    console.error('Database connection error:', error);
     process.exit(1);
   });
 
